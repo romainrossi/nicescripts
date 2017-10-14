@@ -1,0 +1,18 @@
+#!/bin/sh
+# Script using pandoc to convert Markdown files to PDF
+# Author Romain Rossi <rji.rossi@gmail.com>
+# Licence : GPL
+
+logf="$HOME/scripts.log"
+
+for infile in "$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS"
+do
+	d=$(dirname "$infile")
+	i=$(basename -z "$infile")
+	o=$(basename -z --suffix=.txt "$i").pdf
+	ifile="$d/$i"
+	ofile="$d/$o"
+	pandoc -M papersize=a4 -M documentclass=report -M geometry=margin=2cm -f markdown "$ifile" -o "$ofile" 2> "$logf"
+	notify-send "Fichier $ifile converti" "Sortie : $ofile"
+done
+
