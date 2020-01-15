@@ -9,7 +9,7 @@ for infile in "$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS"
 do
 	d=$(dirname "$infile")
 	i=$(basename -z "$infile")
-	o=$(basename -z --suffix=.txt "$i").pdf
+	o=$(basename -z --suffix=.md "$i").pdf
 	ifile="$d/$i"
 	ofile="$d/$o"
 	pandoc -M papersize=a4 -M documentclass=report -M geometry=margin=2cm -f markdown "$ifile" -o "$ofile" 2> "$logf"

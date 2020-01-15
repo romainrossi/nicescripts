@@ -10,7 +10,7 @@ for infile in "$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS"
 do
 	d=$(dirname "$infile")
 	i=$(basename -z "$infile")
-	o=$(basename -z --suffix=.txt "$i").odt
+	o=$(basename -z --suffix=.md "$i").odt
 	ifile="$d/$i"
 	ofile="$d/$o"
 	pandoc -f markdown --toc -t odt "$ifile" -o "$ofile" 2> "$logf"
