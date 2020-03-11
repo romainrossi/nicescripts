@@ -1,0 +1,15 @@
+#!/bin/sh
+# Wrapper nautilus script for ps2pdf
+# Author Romain Rossi <rji.rossi@gmail.com>
+# Licence : GPL
+
+logf="$HOME/scripts.log"
+
+for infile in "$NEMO_SCRIPT_SELECTED_FILE_PATHS"
+do
+	d=$(dirname "$infile")
+	i=$(basename -z "$infile")
+	ifile="$d/$i"
+	ps2pdf "$i" 2> "$logf"
+	notify-send "Fichier $i converti"
+done

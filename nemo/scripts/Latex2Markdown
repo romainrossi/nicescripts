@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Script using pandoc to convert Latex file to Markdown file
+# Author Romain Rossi <rji.rossi@gmail.com>
+# Licence : GPL
+
+logf="$HOME/scripts.log"
+
+for infile in "$NEMO_SCRIPT_SELECTED_FILE_PATHS"
+do
+	d=$(dirname "$infile")
+	i=$(basename -z "$infile")
+	o=$(basename -z --suffix=.txt "$i").md
+	ifile="$d/$i"
+	ofile="$d/$o"
+	pandoc -f latex "$ifile" -o "$ofile" 2> "$logf"
+	notify-send "Fichier $ifile converti" "Sortie : $ofile"
+done
+

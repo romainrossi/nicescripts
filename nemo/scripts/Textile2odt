@@ -1,0 +1,17 @@
+#!/bin/sh
+# Script using pandoc to convert Textile files to OpenDocument text
+# Author Romain Rossi <rji.rossi@gmail.com>
+# Licence : GPL
+
+logf="$HOME/scripts.log"
+
+for infile in "$NEMO_SCRIPT_SELECTED_FILE_PATHS"
+do
+	d=$(dirname "$infile")
+	i=$(basename -z "$infile")
+	o=$(basename -z --suffix=.txt "$i").odt
+	ifile="$d/$i"
+	ofile="$d/$o"
+	pandoc -f textile --toc -t odt "$ifile" -o "$ofile" 2> "$logf"
+	notify-send "Fichier $ifile converti" "Sortie : $ofile"
+done
