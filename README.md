@@ -8,4 +8,10 @@ Some nice scripts...
 * nemo : scripts for the nemo contextual menu
 * bin : scripts for generic bash use
 
+# Author
 
+Romain Rossi <romain.rossi@esigelec.fr>
+
+# Licence
+
+Public Domain
