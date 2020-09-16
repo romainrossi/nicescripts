@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# This script look for a file name (passed as argument) up in the folder
+# hierarchy
+# The function find-up can be reused in other scripts
+
+
+find-up () {
+  path=$(pwd)
+  while [[ "$path" != "" && ! -e "$path/$1" ]]; do
+    path=${path%/*}
+  done
+  echo "$path"
+}
+
+find-up $*
